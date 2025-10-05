@@ -1,0 +1,6 @@
+body {
+	height: 100dvh;
+	width: 100dvw;
+	background: radial-gradient(ellipse at bottom, #151f2a 0%, #090a0f 100%);
+	overflow: hidden;
+}

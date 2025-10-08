@@ -1,6 +1,26 @@
-h1, p {
+* {
 	font-family: Obitron, sans-serif;
 	color: white;
+}
+
+h1 {
+	font-size: 6rem;
+	margin: 0
+}
+
+p {
+	font-size: 1.5rem;
+}
+
+button {
+	background-color: transparent;
+	border: solid white 2px;
+	border-radius: 5px;
+	color: white;
+	padding: 20px;
+	font-size: 1.2rem;
+	font-weight: 700;
+	margin-top: 50px;
 }
 
 .centeredDiv {

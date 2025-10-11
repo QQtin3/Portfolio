@@ -9,26 +9,33 @@ export function ConstellationsStars() {
 	const [hoveredId, setHoveredId] = useState<number | null>(null);
 	const navigate = useNavigate();
 
-	// Pick one constellation config at random (only once)
-	const configIndex: number = Math.floor(Math.random() * STARS_CONFIG.length);
-	const pickedLink = LINKS_CONFIG[configIndex];
-	const pickedStars = STARS_CONFIG[configIndex];
+	const { pickedStars, pickedLink } = useMemo(() => {
+		// Pick one constellation config at random (only once)
+		const index = Math.floor(Math.random() * STARS_CONFIG.length);
+		return {
+			pickedStars: STARS_CONFIG[index], //
+			pickedLink: LINKS_CONFIG[index],
+		};
+	}, []);
 
-	// Build stars objects
-	const stars: Star[] = pickedStars.map((s) => {
-		// Apply 10% randomness for stars positions
-		const {x, y} = randomizePosition(s.x, s.y, 10);
-		return new Star(s.id, x, y, s.route);
-	});
+	// Build & link stars ONCE
+	const stars = useMemo(() => {
 
-	// Adding star links
-	pickedLink.forEach(([a, b]) => {
-		const s1 : Star = stars.find((s: Star) : boolean => s.id === a);
-		const s2 : Star = stars.find((s: Star) : boolean => s.id === b);
-		if (s1 && s2) {
-			s1.addLink(s2);
-		}
-	});
+		// Build stars objects
+		const s: Star[] = pickedStars.map((s) => {
+			const { x, y } = randomizePosition(s.x, s.y, 10);
+			return new Star(s.id, x, y, s.route);
+		});
+
+		// Adding star links
+		pickedLink.forEach(([a, b]) => {
+			const s1 = s.find((star) => star.id === a);
+			const s2 = s.find((star) => star.id === b);
+			if (s1 && s2) s1.addLink(s2);
+		});
+
+		return s;
+	}, [pickedStars, pickedLink]);
 
 	// Draw stars & links
 	useEffect(() => {
@@ -41,13 +48,12 @@ export function ConstellationsStars() {
 			stars.forEach((star: Star) => star.draw(ctx, star.id === hoveredId));
 		};
 
-		// Rezising canvas in case of a window size changing
+		// Resizing canvas in case of a window size changing
 		const resize = () => {
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
 			draw();
 		};
-
 
 		requestAnimationFrame(resize);
 		window.addEventListener("resize", resize);
@@ -69,7 +75,9 @@ export function ConstellationsStars() {
 		const handleClick = () => {
 			if (hoveredId !== null) {
 				const star = stars.find((s) => s.id === hoveredId);
-				if (star) navigate(star.route);
+				if (star) {
+					navigate(star.route);
+				}
 			}
 		};
 

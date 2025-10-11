@@ -20,12 +20,13 @@ export class Star {
 	/**
 	 * Draw current star
 	 * @param ctx CanvasRenderingContext2D
-	 * @param hovered Boolean to handle star color
+	 * @param hovered Boolean to handle star changes when its hovered
 	 */
 	draw(ctx: CanvasRenderingContext2D, hovered: boolean) {
+		const localRadius : number = hovered ? this.radius + 5 : this.radius;
 		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-		ctx.fillStyle = hovered ? "#00ffff" : "#ffffff";
+		ctx.arc(this.x, this.y, localRadius, 0, Math.PI * 2);
+		ctx.fillStyle = hovered ? "#00f7ff" : "#ffffff";
 		ctx.fill();
 	}
 
@@ -62,5 +63,9 @@ export class Star {
 		if (!this.linkedNodes.includes(star)) {
 			this.linkedNodes.push(star);
 		}
+	}
+
+	drawingMissionContainer() {
+
 	}
 }

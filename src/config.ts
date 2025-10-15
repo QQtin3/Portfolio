@@ -1,8 +1,9 @@
 // NOTE: This file lists the different configurations for constellations showing on project page.
+// To edit routing paths, you also need to change some configuration in main.tsx
 
 /*
- * How to add a new configuration :
- * - If you wanna changes routes or mission cards edit GLOBAL_NODES_CONFIG
+ * How to add a new configuration:
+ * - If you wanna changes routes or mission cards, edit GLOBAL_NODES_CONFIG
  * - Add a new array with { id, x, y, route } objects (each representing a star).
  * - Add a matching index array in LINKS_CONFIG defining how stars will link between each other
  *
@@ -13,27 +14,27 @@ export const GLOBAL_NODES_CONFIG: {
     [key: number]: { route: string, name: string, description: string, languages: string[] }
 } = {
     0: {
-        route: '/projet/1',
+        route: '/project/1',
         name: 'MISSION: Zax Peaks',
         description: 'Une super description de projet',
         languages: ['javascript', 'java']},
     1: {
-        route: '/projet/2',
+        route: '/project/2',
         name: 'MISSION: Schej.it',
         description: 'Une super description de projet',
         languages: ['github', 'php', 'javascript']},
     2: {
-        route: '/projet/3',
+        route: '/project/3',
         name: 'MISSION: Stream Alerts',
         description: 'Une super description de projet',
         languages: ['github', 'php', 'javascript']},
     3: {
-        route: '/projet/4',
+        route: '/project/4',
         name: 'MISSION: SiirzApp',
         description: 'Une super description de projet',
         languages: ['github', 'php', 'javascript']},
     4: {
-        route: '/projet/5',
+        route: '/project/5',
         name: 'MISSION: Portfolio',
         description: 'Une super description de projet Une super description de projet Une super description de projet',
         languages: ['github', 'php', 'javascript']},

@@ -12,7 +12,7 @@ export function ConstellationsStars() {
 
     const {pickedStars, pickedLink} = useMemo(() => {
         // Pick one constellation config at random (only once)
-        const index = Math.floor(Math.random() * STARS_CONFIG.length);  // Pick an index : [1; length - 1]
+        const index = Math.floor(Math.random() * STARS_CONFIG.length);  // Pick an index: [1; length - 1]
         return {
             pickedStars: STARS_CONFIG[index],
             pickedLink: LINKS_CONFIG[index],
@@ -27,7 +27,6 @@ export function ConstellationsStars() {
             const x = star.x * window.innerWidth;
             const y = star.y * window.innerHeight;
             const {x: new_x, y: new_y} = randomizePosition(x, y, 10);
-            console.log(new_x, new_y);
             const {route, name, description, languages} = GLOBAL_NODES_CONFIG[star.id];
             return new Star(star.id, new_x, new_y, route, name, description, languages);
         });
@@ -42,7 +41,7 @@ export function ConstellationsStars() {
         return starObjects;
     }, [pickedStars, pickedLink]);
 
-    // Draw stars & links
+    // Draw stars and links
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) {
@@ -57,7 +56,7 @@ export function ConstellationsStars() {
             stars.forEach((star: Star) => star.drawLinks(ctx as CanvasRenderingContext2D, 0.4));
             stars.forEach((star: Star) => star.draw(ctx, star.id === hoveredStar?.id));
             stars.forEach((star: Star) => {
-                if (star.id === hoveredStar?.id) {  // Draw mission container if it's the hovered star.
+                if (star.id === hoveredStar?.id) {  // Draw a mission container if it's the hovered star.
                     star.drawingMissionContainer(ctx);
                 }
             });
@@ -126,7 +125,6 @@ export function ConstellationsStars() {
                 }}
             />
 
-            {/* ✅ Overlay the MissionCard when hovering a star */}
             {hoveredStar && (
                 <div
                     style={{

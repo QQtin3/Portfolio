@@ -10,6 +10,7 @@ h1 {
 
 p {
 	font-size: 1.5rem;
+	margin-bottom: 50px;
 }
 
 button {
@@ -20,7 +21,14 @@ button {
 	padding: 20px;
 	font-size: 1.2rem;
 	font-weight: 700;
-	margin-top: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+button:hover {
+	background-color: white;
+	color: black;
+	transform: scale(1.05);
 }
 
 .centeredDiv {

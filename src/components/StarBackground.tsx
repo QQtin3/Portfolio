@@ -3,7 +3,7 @@ import Particles from "react-tsparticles";
 import {loadFull} from "tsparticles";
 
 export function StarBackground() {
-	const particlesInit = useCallback(async (engine) => {
+	const particlesInit = useCallback(async (engine: any) => {
 		// Load tsparticles engine
 		await loadFull(engine);
 	}, []);

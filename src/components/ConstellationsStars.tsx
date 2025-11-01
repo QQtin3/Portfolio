@@ -1,8 +1,8 @@
 import {useRef, useEffect, useState, useMemo} from "react";
 import {useNavigate} from "react-router-dom";
-import {Star} from "../util/Star";
+import {Star} from "../utils/Star";
 import {STARS_CONFIG, LINKS_CONFIG, GLOBAL_NODES_CONFIG} from "../config.ts";
-import {randomizePosition} from "../util/randomUtil.ts";
+import {randomizePosition} from "../utils/randomUtil.ts";
 import {MissionCard} from "./MissionCard.tsx";
 
 export function ConstellationsStars() {

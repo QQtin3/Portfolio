@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+	font-family: Arial, serif !important;
 }
 
 .project-div {
@@ -22,18 +23,45 @@
 }
 
 .header {
-    display: flex;
-    background-color: yellow;
+	height: fit-content;
+	padding: 1rem 0 1rem 0;
+    display: grid;
+	grid-template-columns: 1.2fr 1fr;
+    background-color: whitesmoke;
+}
+
+.header .title {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 4rem;
+	font-weight: 700;
+	color: black;
 }
 
 .global-content {
-    width: 100%;
+    width: calc(100% - 2rem);
     height: 100%;
     padding: 1rem 1rem 0 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 .content {
     height: fit-content;
     word-break: break-word;
     color: black;
+}
+
+.languages-tools {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+.languages-tools-icon {
+	max-height: 3rem;
 }

@@ -7,7 +7,7 @@ import {
     Box,
 } from "@mui/material";
 import logoCard from "../assets/img/planet-logo.jpg";
-import type {MissionLanguage} from "../util/MissionLanguage.ts";
+import type {MissionLanguage} from "../utils/MissionLanguage.ts";
 
 interface MissionCardProps {
     missionName: string;
